@@ -11,17 +11,21 @@ package GUI;
  */
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+
 public class UserRegisteration extends javax.swing.JFrame {
 
-    Connection con=null;
-ResultSet rs=null;
-PreparedStatement pst=null;
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+
     /**
      * Creates new form UserRegisteration
      */
@@ -52,8 +56,8 @@ PreparedStatement pst=null;
         txtContactNo = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         Save1 = new javax.swing.JButton();
-        Delete1 = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("User Registeration");
@@ -98,12 +102,6 @@ PreparedStatement pst=null;
         jLabel5.setText("Contact No.");
 
         txtContactNo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        txtContactNo.setForeground(new java.awt.Color(0, 0, 0));
-        txtContactNo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContactNoKeyTyped(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -121,19 +119,15 @@ PreparedStatement pst=null;
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtContactNo, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmailID, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtContactNo, txtName, txtPassword});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -152,14 +146,14 @@ PreparedStatement pst=null;
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtEmailID, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtContactNo, txtEmailID, txtName, txtPassword, txtUserName});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtEmailID, txtName, txtPassword, txtUserName});
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -172,20 +166,18 @@ PreparedStatement pst=null;
             }
         });
 
-        Delete1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        Delete1.setText("Delete");
-        Delete1.setEnabled(false);
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
-            }
-        });
-
         menuButton.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         menuButton.setText("Back");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -197,18 +189,18 @@ PreparedStatement pst=null;
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Save1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Delete1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(menuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(Save1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Delete1)
                 .addGap(31, 31, 31)
+                .addComponent(Save1)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(menuButton)
                 .addGap(67, 67, 67))
         );
@@ -250,106 +242,47 @@ PreparedStatement pst=null;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtContactNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactNoKeyTyped
-        char c=evt.getKeyChar();
-        if (!(Character.isDigit(c)|| (c== KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))){
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtContactNoKeyTyped
 
-    private void Reset(){
-    txtName.setText("");
-    txtUserName.setText("");
-    txtPassword.setText("");
-    txtEmailID.setText("");
-    txtContactNo.setText("");
-    Save1.setEnabled(true);
-    Delete1.setEnabled(false);
-    Update1.setEnabled(false);
-    txtUserName.requestDefaultFocus();
-    }
-    
     private void Save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save1ActionPerformed
-//        try{
-//            con=Connect.ConnectDB();
-//            if (txtName.getText().equals("")) {
-//                JOptionPane.showMessageDialog( this, "Please enter name","Error", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//            if (txtUserName.getText().equals("")) {
-//                JOptionPane.showMessageDialog( this, "Please enter user name","Error", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//            String Password= String.valueOf(txtPassword.getPassword());
-//            if (Password.equals("")) {
-//                JOptionPane.showMessageDialog( this, "Please enter password","Error", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//            if (txtContactNo.getText().equals("")) {
-//                JOptionPane.showMessageDialog( this, "Please enter contact no.","Error", JOptionPane.ERROR_MESSAGE);
-//                return;
-//            }
-//
-//            Statement stmt;
-//            stmt= con.createStatement();
-//            String sql1="Select username from Registeration where Username= '" + txtUserName.getText() + "'";
-//            rs=stmt.executeQuery(sql1);
-//            if(rs.next()){
-//                JOptionPane.showMessageDialog( this, "User name already exists","Error", JOptionPane.ERROR_MESSAGE);
-//                txtUserName.setText("");
-//                txtUserName.requestDefaultFocus();
-//                return;
-//            }
-//            String Password1= String.valueOf(txtPassword.getPassword());
-//            String sql= "insert into Registeration(username,password,nameofuser,Email,ContactNo)values('"+ txtUserName.getText() + "','" + Password1 + "','" + txtName.getText() + "','" + txtEmailID.getText() + "','" + txtContactNo.getText() + "')";
-//
-//            pst=con.prepareStatement(sql);
-//            pst.execute();
-//            String sql2= "insert into Users(Username,User_Password)values('" + txtUserName.getText() + "','" + Password1 + "')";
-//
-//            pst=con.prepareStatement(sql2);
-//            pst.execute();
-//            JOptionPane.showMessageDialog(this,"Successfully Registered","User",JOptionPane.INFORMATION_MESSAGE);
-//            Save1.setEnabled(false);
-//        }
-//        catch(HeadlessException | SQLException ex){
-//            JOptionPane.showMessageDialog(this,ex);
-//        }
+        //Save Function 
+        String n1 = txtName.getText();
+        String n2 = txtUserName.getText();
+        String n3 = txtPassword.getText();
+        String n4 = txtEmailID.getText();
+        String n5 = txtContactNo.getText();
+
+        try {
+            File f = new File("Regi-data.txt");
+            FileWriter fw = new FileWriter(f, true);
+            fw.write(n1 + "\t");
+            fw.write(n2 + "\t");
+            fw.write(n3 + "\t");
+            fw.write(n4 + "\t");
+            fw.write(n5 + "\n");
+
+            fw.write("\r\n");
+            fw.close();
+            JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "File Not Found");
+        }
+
     }//GEN-LAST:event_Save1ActionPerformed
 
-    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
-        try
-        {
-            if("".equals(txtUserName.getText())){
-                JOptionPane.showMessageDialog(null, "Please select a username to delete!");
-                return;
-            }
-            int P = JOptionPane.showConfirmDialog(null," Are you sure want to delete ?","Confirmation",JOptionPane.YES_NO_OPTION);
-            if (P==0)
-            {
-                con=Connect.ConnectDB();
-
-                String sql= "delete from Registeration where Username = '" + txtUserName.getText() + "'";
-                pst=con.prepareStatement(sql);
-                pst.execute();
-                String sql1= "delete from Users where Username = '" + txtUserName.getText() + "'";
-                pst=con.prepareStatement(sql1);
-                pst.execute();
-                JOptionPane.showMessageDialog(this,"Successfully deleted","Record",JOptionPane.INFORMATION_MESSAGE);
-                Reset();
-            }
-        }catch(HeadlessException | SQLException ex){
-            JOptionPane.showMessageDialog(this,ex);
-        }
-
-    }//GEN-LAST:event_Delete1ActionPerformed
-
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-        MainMenu main=new MainMenu();
+        MainMenu main = new MainMenu();
         this.hide();
         main.setVisible(true);
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        txtName.setText("");
+        txtUserName.setText("");
+        txtPassword.setText("");
+        txtEmailID.setText("");
+        txtContactNo.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,8 +320,8 @@ PreparedStatement pst=null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton Delete1;
     public javax.swing.JButton Save1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -398,7 +331,7 @@ PreparedStatement pst=null;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton menuButton;
-    public javax.swing.JTextField txtContactNo;
+    private javax.swing.JTextField txtContactNo;
     public javax.swing.JTextField txtEmailID;
     public javax.swing.JTextField txtName;
     public javax.swing.JPasswordField txtPassword;

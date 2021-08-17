@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         String Username = userNameField.getText();
         String pass = passwordField.getText();
 
-        if (Username.equals("admin") && pass.equals("admin")) {
+        if (Username.equals("faysal") && pass.equals("5678")) {
             MainMenu m = new MainMenu();
             this.hide();
 

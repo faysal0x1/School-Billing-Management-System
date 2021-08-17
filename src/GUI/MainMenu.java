@@ -41,7 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addStudentButton);
-        addStudentButton.setBounds(30, 127, 180, 60);
+        addStudentButton.setBounds(30, 127, 175, 60);
 
         studentListButton.setBackground(new java.awt.Color(255, 255, 255));
         studentListButton.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -120,7 +120,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(logoutButton);
-        logoutButton.setBounds(614, 367, 97, 30);
+        logoutButton.setBounds(614, 367, 84, 30);
 
         addUserButton.setBackground(new java.awt.Color(255, 255, 255));
         addUserButton.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -133,14 +133,14 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addUserButton);
-        addUserButton.setBounds(30, 369, 93, 26);
+        addUserButton.setBounds(30, 369, 84, 25);
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 102));
         jLabel1.setText("           School Management System");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 102), 3));
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(12, 12, 717, 50);
+        jLabel1.setBounds(10, 10, 717, 50);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/images/school.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");

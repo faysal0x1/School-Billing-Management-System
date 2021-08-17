@@ -226,7 +226,6 @@ public class StaffRecord extends javax.swing.JFrame {
                 //System.out.println(num);
 
             }
-
             jTextArea1.setText(num);
 
         } catch (Exception e) {

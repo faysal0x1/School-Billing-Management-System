@@ -35,7 +35,7 @@ public class StudentForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student Form");
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(java.awt.Color.gray);
         jPanel1.setMaximumSize(new java.awt.Dimension(1366, 720));
         jPanel1.setMinimumSize(new java.awt.Dimension(1366, 700));
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 710));
@@ -46,7 +46,7 @@ public class StudentForm extends javax.swing.JFrame {
         jLabel1.setText("                                                   Student's Details");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(java.awt.Color.gray);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Basic Info", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -167,7 +167,7 @@ public class StudentForm extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel4.setBackground(java.awt.Color.gray);
 
         backButton.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         backButton.setText("Back");
@@ -317,8 +317,6 @@ public class StudentForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "File Not Found");
         }
       
-
-
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed

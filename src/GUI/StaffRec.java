@@ -25,6 +25,8 @@ public class StaffRec extends javax.swing.JFrame {
         addressField = new javax.swing.JTextField();
         dobLabel = new javax.swing.JLabel();
         dobField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        phoneNum = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
@@ -40,7 +42,7 @@ public class StaffRec extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1366, 710));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("                                                   Staff's Details");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 4));
@@ -119,6 +121,16 @@ public class StaffRec extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(java.awt.Color.white);
+        jLabel2.setText("Phone :");
+
+        phoneNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNumActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -137,12 +149,14 @@ public class StaffRec extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dobLabel)
-                            .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dobField)
-                            .addComponent(addressField))))
-                .addGap(0, 937, Short.MAX_VALUE))
+                            .addComponent(addressField)
+                            .addComponent(phoneNum))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +177,11 @@ public class StaffRec extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(phoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
@@ -207,13 +225,13 @@ public class StaffRec extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(301, Short.MAX_VALUE)
                 .addComponent(backButton)
-                .addGap(62, 62, 62)
-                .addComponent(saveButton)
                 .addGap(41, 41, 41)
+                .addComponent(saveButton)
+                .addGap(32, 32, 32)
                 .addComponent(deleteButton)
-                .addGap(29, 29, 29)
+                .addGap(26, 26, 26)
                 .addComponent(studentRecord)
-                .addGap(521, 521, 521))
+                .addGap(554, 554, 554))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {backButton, deleteButton, saveButton, studentRecord});
@@ -223,10 +241,10 @@ public class StaffRec extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton)
                     .addComponent(studentRecord)
                     .addComponent(saveButton)
-                    .addComponent(backButton))
+                    .addComponent(backButton)
+                    .addComponent(deleteButton))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -251,7 +269,7 @@ public class StaffRec extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -300,22 +318,23 @@ public class StaffRec extends javax.swing.JFrame {
         String n3 = dobField.getText();
         String n4 = addressField.getText();
 
+
         try {
             File f = new File("staff-rec.txt");
             FileWriter fw = new FileWriter(f, true);
-//            fw.write(n8 + "\n");
             fw.write(n1 + "\t");
             fw.write(n2 + "\t");
             fw.write(n3 + "\t");
-            fw.write(n4 + "\n");
-
+            fw.write(n4 + "\t");
+            
+            
+            
             fw.write("\r\n");
             fw.close();
-              JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "File Not Found");
         }
-      
+            JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
 
 
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -351,7 +370,9 @@ public class StaffRec extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fatherNameFieldKeyTyped
 
-  
+    private void phoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNumActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,9 +424,11 @@ public class StaffRec extends javax.swing.JFrame {
     public javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField phoneNum;
     public javax.swing.JButton saveButton;
     private javax.swing.JButton studentRecord;
     // End of variables declaration//GEN-END:variables
