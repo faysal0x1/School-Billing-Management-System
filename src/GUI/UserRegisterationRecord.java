@@ -1,17 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GUI;
 
-/**
- *
- * @author M Azhar Durrani
- */
-import java.sql.*;
+package GUI;
 import javax.swing.*;
-import net.proteanit.sql.DbUtils;
 public class UserRegisterationRecord extends javax.swing.JFrame {
 
     Connection con=null;
@@ -22,23 +11,9 @@ public class UserRegisterationRecord extends javax.swing.JFrame {
      */
     public UserRegisterationRecord() {
         initComponents();
-//        con= Connect.ConnectDB();
-//        Get_Data();
-//        setLocationRelativeTo(null);
     }
     
-    private void Get_Data(){
-        String sql="select NameOfUser as [Name], UserName as [User Name],Password,ContactNo as [Contact No],Email as [Email ID] from Registeration";
-          try{
-         pst=con.prepareStatement(sql);
-          rs= pst.executeQuery();
-         jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-          
-}
-    }
-    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,35 +81,7 @@ public class UserRegisterationRecord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        try{
-            con=Connect.ConnectDB();
-            int row= jTable1.getSelectedRow();
-            String table_click= jTable1.getModel().getValueAt(row, 1).toString();
-            String sql= "select * from Registeration where username= '" + table_click + "'";
-            pst=con.prepareStatement(sql);
-            rs=  pst.executeQuery();
-            if(rs.next()){
-                this.hide();
-                UserRegisteration frm = new UserRegisteration();
-                frm.setVisible(true);
-                String add1=rs.getString("Username");
-                frm.txtUserName.setText(add1);
-                String add2=rs.getString("Password");
-                frm.txtPassword.setText(add2);
-                String add3=rs.getString("NameOfUser");
-                frm.txtName.setText(add3);
-                String add4=rs.getString("ContactNo");
-                frm.txtContactNo.setText(add4);
-                String add5=rs.getString("Email");
-                frm.txtEmailID.setText(add5);
-                frm.Save1.setEnabled(false);
-                frm.Delete1.setEnabled(true);
-                frm.Update1.setEnabled(true);
-            }
-
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this,ex);
-        }
+      
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

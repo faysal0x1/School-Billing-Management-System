@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
-/**
- *
- * @author M Azhar Durrani
- */
+
 public class TeacherRecord extends javax.swing.JFrame {
 
     Connection con=null;
@@ -51,8 +46,6 @@ public class TeacherRecord extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        dataTableTeacher = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
         staffRecord = new javax.swing.JButton();
@@ -60,34 +53,16 @@ public class TeacherRecord extends javax.swing.JFrame {
         staffForm = new javax.swing.JButton();
         studentRecord = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Teacher Record");
-
-        dataTableTeacher.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        dataTableTeacher.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12"
-            }
-        ));
-        dataTableTeacher.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dataTableTeacherMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(dataTableTeacher);
 
         backButton.setText("Main Menu");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -136,19 +111,19 @@ public class TeacherRecord extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(backButton)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(staffRecord)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(teacherForm)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(staffForm)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(studentRecord)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton11)
-                .addGap(41, 41, 41))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {backButton, jButton11, staffForm, staffRecord, studentRecord, teacherForm});
@@ -157,89 +132,76 @@ public class TeacherRecord extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(teacherForm)
-                        .addComponent(staffForm)
-                        .addComponent(studentRecord)
-                        .addComponent(jButton11))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(staffRecord)
-                        .addComponent(backButton)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(staffRecord)
+                    .addComponent(backButton)
+                    .addComponent(teacherForm)
+                    .addComponent(staffForm)
+                    .addComponent(studentRecord)
+                    .addComponent(jButton11))
                 .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {backButton, jButton11, staffForm, staffRecord, studentRecord, teacherForm});
 
+        jLabel3.setText("Date of Birth");
+
+        jLabel4.setText("Address");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jLabel1.setText("Name");
+
+        jLabel2.setText("fathers name");
+
+        jButton1.setText("View");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1400, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel2)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel3)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel4))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void dataTableTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableTeacherMouseClicked
-            try{
-            con = Connect.ConnectDB();
-            int row = dataTableTeacher.getSelectedRow();
-            String tableClick = dataTableTeacher.getModel().getValueAt(row, 0).toString();
-            String sql = "select * from TeacherRecord where TeacherID='"+tableClick+"'";
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-            if(rs.next()){
-                this.hide();
-                TeacherForm teacher=new TeacherForm();
-                teacher.setVisible(true);
-                String add1 = rs.getString("TeacherID");
-                teacher.teacherIdField.setText(add1);
-                String add2 = rs.getString("FirstName");
-                teacher.firstNameField.setText(add2);
-                String add3 = rs.getString("LastName");
-                teacher.lastNameField.setText(add3);
-                String add4 = rs.getString("FatherName");
-                teacher.fatherNameField.setText(add4);
-                String add5 = rs.getString("EmailAddress");
-                teacher.emailAddress.setText(add5);
-                String add6 = rs.getString("ContactNo");
-                teacher.mobileField.setText(add6);
-                String add7 = rs.getString("CNIC");
-                teacher.cnicField.setText(add7);
-                String add8 = rs.getString("Salary");
-                teacher.salaryField.setText(add8);
-                String add9 = rs.getString("Designation");
-                teacher.designationField.setText(add9);
-                String add10 = rs.getString("AcademicQualification");
-                teacher.aqField.setText(add10);
-                String add11 = rs.getString("Address");
-                teacher.addressField.setText(add11);
-                String add12 = rs.getString("Gender");
-                teacher.cmbGender.setSelectedItem(add12);
-                String add14 = rs.getString("Experience");
-                teacher.experienceField.setText(add14);
-                String add13 = rs.getString("DateOfJoinning");
-                teacher.joinningDateField.setText(add13);
-                teacher.updateButton.setEnabled(true);
-                teacher.deleteButton.setEnabled(true);
-                teacher.saveButton.setEnabled(false);
-            }
-            
-        }
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex);
-        }
-    }//GEN-LAST:event_dataTableTeacherMouseClicked
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
        MainMenu m =new MainMenu();
@@ -276,6 +238,34 @@ public class TeacherRecord extends javax.swing.JFrame {
         this.hide();
         login.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+//        Viewing Record 
+
+
+        try {
+            File f = new File("teacher-rec.txt");
+            Scanner in = new Scanner(f);
+            String num="";
+            while(in.hasNext())
+            {
+                num += in.nextLine()+"\n" ;
+                //System.out.println(num);
+         
+            }
+        
+            jTextArea1.setText(num);
+          
+        } catch (Exception e)
+        {
+               JOptionPane.showMessageDialog(this,"File Not Found");
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,10 +304,15 @@ public class TeacherRecord extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JTable dataTableTeacher;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton staffForm;
     private javax.swing.JButton staffRecord;
     private javax.swing.JButton studentRecord;

@@ -1,71 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
-import java.awt.HeadlessException;
-import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
-/**
- *
- * @author M Azhar Durrani
- */
 public class Login extends javax.swing.JFrame {
-
-    Connection con = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        setIcon();
+
     }
-    
-    public void setdata() throws IOException{
-        File f = new File("userData.txt");
-        if(!f.exists()){
-           f.createNewFile();
-        }
-         BufferedReader br = new BufferedReader(new FileReader(f));
-         Object[] Lines = br.lines().toArray();
-         int i = 0;
-         int id = 0;
-         
-         for(i=0; i<Lines.length; i++){
-            String Line = Lines[i].toString().trim();
-            String[] Row = Line.split(",");
-            id = Integer.parseInt(Row[0]);
-         }
-         
-         int userId = id+1;
-         FileWriter fw = new FileWriter(f,true);
-         BufferedWriter bw = new BufferedWriter(fw);
-         PrintWriter pw = new PrintWriter(bw);
-         pw.println(userId+ "," +username.getText() + "," + userid.getText() + "," +userpass.getText());
-         pw.flush();
-         pw.close();
-         bw.close();
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -230,42 +173,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            con = Connect.ConnectDB();
-            String sql = "select * from Users where Username= '" + userNameField.getText() + "' and User_Password ='" + passwordField.getText() + "'";
-            try {
-                pst = con.prepareStatement(sql);
-                rs = pst.executeQuery();
-                if ("".equals(userNameField.getText()) && "".equals(passwordField.getText())) {
-                    JOptionPane.showMessageDialog(null, "Please Enter Username and Password!");
-                } else if (rs.next()) {
-                    this.hide();
-                    MainMenu menu = new MainMenu();
-                    menu.setVisible(true);
-                } else {
-
-                    JOptionPane.showMessageDialog(null, "Login Failed..Try again !", "Access denied", JOptionPane.ERROR_MESSAGE);
-                    userNameField.setText("");
-                    passwordField.setText("");
-                    userNameField.requestFocus();
-                }
-            } catch (SQLException | HeadlessException e) {
-                JOptionPane.showMessageDialog(null, e);
-            }
-
-        }
     }//GEN-LAST:event_passwordFieldKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-           try {
-            setdata();
-            JOptionPane.showMessageDialog(this,"Registration Successful!!");
-        } catch (IOException ex) {
-//            Logger.getLogger(RegistrationForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        UserRegisterationRecord reg = new UserRegisterationRecord();
+        reg.setVisible(true);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -321,8 +238,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JDialog welcomeDialog;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-
-        //setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logout.png")));
-    }
 }
