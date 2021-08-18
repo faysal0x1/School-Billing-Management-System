@@ -317,25 +317,32 @@ public class StaffRec extends javax.swing.JFrame {
         String n2 = fatherNameField.getText();
         String n3 = dobField.getText();
         String n4 = addressField.getText();
-
-
+        int n5 = 0;
         try {
-            File f = new File("staff-rec.txt");
-            FileWriter fw = new FileWriter(f, true);
-            fw.write(n1 + "\t");
-            fw.write(n2 + "\t");
-            fw.write(n3 + "\t");
-            fw.write(n4 + "\t");
-            
-            
-            
-            fw.write("\r\n");
-            fw.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "File Not Found");
-        }
-            JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
+            n5 = Integer.parseInt(phoneNum.getText());
 
+            try {
+                File f = new File("staff-rec.txt");
+                FileWriter fw = new FileWriter(f, true);
+                fw.write(n1 + "\t");
+                fw.write(n2 + "\t\t");
+                fw.write(n3 + "\t\t");
+                fw.write(n4 + "\t");
+                fw.write(String.valueOf(n5) + "\n");
+
+                fw.write("\r\n");
+                fw.close();
+                JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "File Not Found");
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid Number");
+        }
+
+//        if (e.get)
 
     }//GEN-LAST:event_saveButtonActionPerformed
 

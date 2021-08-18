@@ -1,15 +1,7 @@
-
 package GUI;
-
 
 import java.io.File;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
-
-
-
-import java.awt.HeadlessException;
-import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 public class StudentRecord extends javax.swing.JFrame {
@@ -17,7 +9,26 @@ public class StudentRecord extends javax.swing.JFrame {
     public StudentRecord() {
         initComponents();
     }
-    
+
+    public void viewData() {
+
+        try {
+            File f = new File("data.txt");
+            Scanner in = new Scanner(f);
+            String num = "";
+            while (in.hasNext()) {
+                num += in.nextLine() + "\n";
+                //System.out.println(num);
+
+            }
+
+            jTextArea1.setText(num);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "File Not Found");
+
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -185,25 +196,25 @@ public class StudentRecord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void staffRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffRecordActionPerformed
-        StaffRecord record=new StaffRecord();
+        StaffRecord record = new StaffRecord();
         this.hide();
         record.setVisible(true);
     }//GEN-LAST:event_staffRecordActionPerformed
 
     private void teacherFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherFormActionPerformed
-        TeacherForm form=new TeacherForm();
+        TeacherForm form = new TeacherForm();
         this.hide();
         form.setVisible(true);
     }//GEN-LAST:event_teacherFormActionPerformed
 
     private void staffFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffFormActionPerformed
-        StaffForm form=new StaffForm();
+        StaffForm form = new StaffForm();
         this.hide();
         form.setVisible(true);
     }//GEN-LAST:event_staffFormActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Login login=new Login();
+        Login login = new Login();
         this.hide();
         login.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -212,48 +223,29 @@ public class StudentRecord extends javax.swing.JFrame {
         /*StudentForm menu=new StudentForm();
         this.hide();
         menu.setVisible(true);*/
-        MainMenu m=new MainMenu();
+        MainMenu m = new MainMenu();
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void teacherRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teacherRecordActionPerformed
-        TeacherRecord record=new TeacherRecord();
+        TeacherRecord record = new TeacherRecord();
         this.hide();
         record.setVisible(true);
     }//GEN-LAST:event_teacherRecordActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
-        try {
-            File f = new File("data.txt");
-            Scanner in = new Scanner(f);
-            String num="";
-            while(in.hasNext())
-            {
-                num += in.nextLine()+"\n" ;
-                //System.out.println(num);
-         
-            }
-        
-            jTextArea1.setText(num);
-          
-        } catch (Exception e)
-        {
-               JOptionPane.showMessageDialog(this,"File Not Found");
 
-        }
+        viewData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
-    this.hide();
-    StudentForm form = new StudentForm();
-    form.setVisible(true);
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        this.hide();
+        StudentForm form = new StudentForm();
+        form.setVisible(true);
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */

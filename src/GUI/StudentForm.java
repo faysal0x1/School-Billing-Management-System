@@ -1,6 +1,5 @@
 package GUI;
 
-import java.awt.HeadlessException;
 import java.io.File;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
@@ -9,6 +8,40 @@ public class StudentForm extends javax.swing.JFrame {
 
     public StudentForm() {
         initComponents();
+    }
+
+    public void clear() {
+        firstNameField.setText("");
+        fatherNameField.setText("");
+        dobField.setText("");
+        addressField.setText("");
+    }
+    
+    
+    public void saveFile()
+    {
+        
+        //Save Function 
+        String n1 = firstNameField.getText();
+        String n2 = fatherNameField.getText();
+        String n3 = dobField.getText();
+        String n4 = addressField.getText();
+
+        try {
+            File f = new File("data.txt");
+            FileWriter fw = new FileWriter(f, true);
+//            fw.write(n8 + "\n");
+            fw.write(n1 + "\t");
+            fw.write(n2 + "\t");
+            fw.write(n3 + "\t");
+            fw.write(n4 + "\n");
+
+            fw.write("\r\n");
+            fw.close();
+            JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "File Not Found");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -294,37 +327,13 @@ public class StudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        saveFile();
 
-        //Save Function 
-        String n1 = firstNameField.getText();
-        String n2 = fatherNameField.getText();
-        String n3 = dobField.getText();
-        String n4 = addressField.getText();
-
-        try {
-            File f = new File("data.txt");
-            FileWriter fw = new FileWriter(f, true);
-//            fw.write(n8 + "\n");
-            fw.write(n1 + "\t");
-            fw.write(n2 + "\t");
-            fw.write(n3 + "\t");
-            fw.write(n4 + "\n");
-
-            fw.write("\r\n");
-            fw.close();
-              JOptionPane.showMessageDialog(this, "Reservation Sucessfully.");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "File Not Found");
-        }
-      
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
 
-        firstNameField.setText("");
-        fatherNameField.setText("");
-        dobField.setText("");
-        addressField.setText("");
+        clear();
 
     }//GEN-LAST:event_deleteButtonActionPerformed
 
@@ -349,8 +358,6 @@ public class StudentForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Name does not contain any numbers!");
         }
     }//GEN-LAST:event_fatherNameFieldKeyTyped
-
-  
 
     /**
      * @param args the command line arguments
